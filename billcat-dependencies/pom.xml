@@ -135,6 +135,13 @@
 				<artifactId>billcat-web</artifactId>
 				<version>${revision}</version>
 			</dependency>
+
+			<!-- mybatis-plus -->
+			<dependency>
+				<groupId>net.billcat</groupId>
+				<artifactId>billcat-spring-boot-starter-mybatis-plus</artifactId>
+				<version>${revision}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

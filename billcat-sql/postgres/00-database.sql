@@ -1,0 +1,3 @@
+-- create database billcat;
+-- create database "order-service";
+-- create database "inventory-service";
