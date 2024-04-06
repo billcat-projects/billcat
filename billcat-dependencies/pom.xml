@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.billcat</groupId>
+	<artifactId>billcat-dependencies</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<revision>0.0.1-SNAPSHOT</revision>
+
+		<!-- 插件版本 -->
+		<maven-compiler-plugin.verison>3.11.0</maven-compiler-plugin.verison>
+		<maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<spring-javaformat-checkstyle.version>0.0.41</spring-javaformat-checkstyle.version>
+
+		<!-- 版本关系 https://start.spring.io/actuator/info -->
+		<spring-boot.version>3.2.4</spring-boot.version>
+
+		<spring-authorization-server.version>1.2.3</spring-authorization-server.version>
+		<hutool.version>5.8.25</hutool.version>
+		<lombok.version>1.18.30</lombok.version>
+		<io.swagger.v3.version>2.2.7</io.swagger.v3.version>
+
+		<springdoc.version>2.3.0</springdoc.version>
+		<mybatis.version>3.5.15</mybatis.version>
+		<mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
+		<mybatis-plus.version>3.5.5</mybatis-plus.version>
+		<easyexcel.starter.version>3.2.0</easyexcel.starter.version>
+	</properties>
+
+	<!-- 依赖声明 -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- ==================== 第三方 bom 导入 ================== -->
+			<!-- 注意 bom 导入有优先级顺序，写在前面的优先级高 -->
+			<!-- spring boot 依赖管理 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/cn.hutool/hutool-core -->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-core</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-oauth2-authorization-server</artifactId>
+				<version>${spring-authorization-server.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring-boot.version}</version>
+			</dependency>
+
+			<!-- lombok 代码简化处理器 -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-starter-common</artifactId>
+				<version>${springdoc.version}</version>
+			</dependency>
+
+			<!--swagger v3-->
+			<dependency>
+				<groupId>io.swagger.core.v3</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${io.swagger.v3.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+				<version>${springdoc.version}</version>
+			</dependency>
+
+			<!--region ============= 定义 billcat 自身模块版本 ================== -->
+			<!-- common 基础 -->
+			<dependency>
+				<groupId>net.billcat</groupId>
+				<artifactId>billcat-common-util</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.billcat</groupId>
+				<artifactId>billcat-common-model</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.billcat</groupId>
+				<artifactId>billcat-common-core</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!-- web -->
+			<dependency>
+				<groupId>net.billcat</groupId>
+				<artifactId>billcat-spring-boot-starter-web</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.billcat</groupId>
+				<artifactId>billcat-web</artifactId>
+				<version>${revision}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>maven-releases</id>
+			<name>maven-releases</name>
+			<url>http://192.168.1.103:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<name>maven-snapshots</name>
+			<url>http://192.168.1.103:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>io.spring.javaformat</groupId>
+					<artifactId>spring-javaformat-maven-plugin</artifactId>
+					<version>${spring-javaformat-checkstyle.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.verison}</version>
+				</plugin>
+
+				<!-- 测试插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
