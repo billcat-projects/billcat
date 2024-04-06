@@ -1,6 +1,12 @@
 # Billcat
 Billcat. / ( /bɪl/ /kæt/) / Bill is a cat.
 
+This name more or less comes after [ballcat](https://github.com/ballcat-projects/ballcat), a highly modular spring boot based project with a lot of starters and written by a very talented person! Ballcat is very good for your side projects as well as for learning purpose.
+
+Billcat is a not a replacement, it will focus more on cloud based architecture. 
+
+Hereby, I will copy the needed code directly from ballcat for my common/infrastructure code. They all live happily in the `common` directory :)
+
 ## Tech stack
 - Java 17
 - Spring Boot 3.2.4
