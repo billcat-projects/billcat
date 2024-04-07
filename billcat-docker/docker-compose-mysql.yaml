@@ -10,14 +10,21 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     ports:
       - '3306:3306'
+    networks:
+      - network1
     volumes:
       - mysql:/var/lib/mysql
       - ../billcat-sql/mysql/01-billcat-product.sql:/docker-entrypoint-initdb.d/01.sql
       - ../billcat-sql/mysql/02-billcat-product-data.sql:/docker-entrypoint-initdb.d/02.sql
+    healthcheck:
+      test: ['CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 --password=billcat --silent']
+      interval: 3s
+      retries: 5
+      start_period: 30s
 volumes:
   mysql:
     driver: local
 networks:
   network1:
     name: billcat-network
-    external: true
+    external: false

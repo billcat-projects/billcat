@@ -33,6 +33,7 @@
 		<module>common/billcat-web</module>
 		<module>common/billcat-spring-boot-starter-web</module>
 		<module>common/billcat-spring-boot-starter-mybatis-plus</module>
+		<module>billcat-auth</module>
 	</modules>
 
 	<dependencies>
