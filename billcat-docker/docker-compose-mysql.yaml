@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mysql:
     image: mysql:8.0.36
-    container_name: billcat_mysql
+    container_name: billcat-mysql
     restart: no
     environment:
       MYSQL_DATABASE: billcat
@@ -14,8 +14,7 @@ services:
       - network1
     volumes:
       - mysql:/var/lib/mysql
-      - ../billcat-sql/mysql/01-billcat-product.sql:/docker-entrypoint-initdb.d/01.sql
-      - ../billcat-sql/mysql/02-billcat-product-data.sql:/docker-entrypoint-initdb.d/02.sql
+      - ../billcat-sql/mysql:/docker-entrypoint-initdb.d
     healthcheck:
       test: ['CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 --password=billcat --silent']
       interval: 3s

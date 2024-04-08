@@ -10,4 +10,4 @@ CREATE TABLE product
     rating      numeric(3, 1)  null default null comment 'rating',
     price       decimal(10, 2) not null comment 'price',
     primary key (id)
-) auto_increment = 1001 comment 'Product';
+) auto_increment = 100 comment 'Product';

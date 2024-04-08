@@ -1,19 +1,25 @@
+## For now, use MySQL only
 
-## 开发: 只需要启动 DB(mysql 或 pg)
+start mysql
+
+```shell
+docker rm -f billcat_mysql
+docker volume rm -f billcat-docker_mysql
+docker volume create billcat-docker_mysql
+docker-compose -f docker-compose-mysql.yaml up
+docker ps
+```
+
+stop mysql
+
+```shell
+docker-compose -f docker-compose-mysql.yaml down
+```
+
+
+## Start up both databases(Backup)
 
 ```shell
 cd billcat-docker
-docker-compose -f docker-compose-postgres.yaml -f docker-compose-mysql.yaml -p billcat-docker up
-
-[+] Running 2/2
- ✔ Container billcat_postgres  Started                                                                                                                  1.0s 
- ✔ Container billcat_mysql     Started                                                                                                                  1.0s 
- 
-docker-compose -f docker-compose-postgres.yaml -f docker-compose-mysql.yaml -p billcat-docker down --remove-orphans
-[+] Running 3/3
- ✔ Container billcat_mysql     Removed                                                                                                                                                2.1s 
- ✔ Container billcat_postgres  Removed                                                                                                                                                0.5s 
- ✔ Network billcat-network     Removed                                                                                                                                                0.2s 
-
-
+docker-compose -f docker-compose-postgres.yaml -f docker-compose-mysql.yaml up -d
 ```
