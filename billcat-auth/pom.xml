@@ -81,6 +81,14 @@
 			<artifactId>font-awesome</artifactId>
 			<version>5.15.4</version>
 		</dependency>
+        <dependency>
+            <groupId>net.billcat</groupId>
+            <artifactId>billcat-common-model</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>net.billcat</groupId>
+			<artifactId>billcat-common-model</artifactId>
+		</dependency>
 
 	</dependencies>
 </project>
